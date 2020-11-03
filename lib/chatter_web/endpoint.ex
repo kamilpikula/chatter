@@ -51,4 +51,8 @@ defmodule ChatterWeb.Endpoint do
   plug Plug.Head
   plug Plug.Session, @session_options
   plug ChatterWeb.Router
+
+  if Application.get_env(:chatter, :sandbox) do
+    plug Phoenix.Ecto.SQL.Sandbox
+  end
 end
